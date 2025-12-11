@@ -1,0 +1,477 @@
+/* Base Styles & Modern Palette */
+:root {
+    --primary-color: #3f51b5; /* Indigo */
+    --primary-dark: #303f9f;
+    --secondary-color: #ff4081; /* Pink Accent */
+    --background-color: #f4f4f9;
+    --card-background: #ffffff;
+    --text-color: #212121;
+    --light-text-color: #757575;
+    --border-color: #e0e0e0;
+    --highlight-color: rgba(63, 81, 181, 0.1);
+    --border-radius: 8px;
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Align to top for better UX on large screens */
+    min-height: 100vh;
+    padding: 20px;
+}
+
+/* App Container Layout (Desktop) */
+.app-container {
+    display: flex;
+    max-width: 1200px;
+    width: 100%;
+    gap: 30px;
+}
+
+/* Main Player Styling */
+.music-player {
+    flex: 2;
+    background-color: var(--card-background);
+    padding: 30px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+/* Track Info and Cover Art */
+.track-info-section {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.cover-art-container {
+    width: 100%;
+    max-width: 300px;
+    aspect-ratio: 1 / 1;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    border-radius: var(--border-radius);
+    overflow: hidden;
+}
+
+.cover-art {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.track-title {
+    font-size: 1.8rem;
+    margin-bottom: 5px;
+    color: var(--primary-dark);
+}
+
+.track-artist, .track-album {
+    font-size: 1rem;
+    color: var(--light-text-color);
+}
+
+/* Controls Section */
+.controls-section {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    align-items: center;
+}
+
+/* Buttons */
+.control-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--text-color);
+    transition: color 0.2s, background-color 0.2s;
+    padding: 10px;
+    border-radius: 50%;
+}
+
+.control-btn:focus-visible {
+    outline: 2px solid var(--primary-color);
+    outline-offset: 2px;
+}
+
+.control-btn i {
+    font-size: 1.2rem;
+}
+
+.control-btn:hover {
+    color: var(--primary-color);
+}
+
+.large-control {
+    width: 60px;
+    height: 60px;
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    margin: 0 10px;
+}
+
+.large-control i {
+    font-size: 1.8rem;
+}
+
+.large-control:hover {
+    background-color: var(--primary-dark);
+    color: white;
+}
+
+.secondary-control {
+    opacity: 0.7;
+}
+
+.secondary-control.active {
+    color: var(--secondary-color);
+    opacity: 1;
+}
+
+
+.main-controls {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    max-width: 400px;
+}
+
+/* Volume Control */
+.volume-container {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    max-width: 400px;
+    gap: 10px;
+}
+
+.volume-slider {
+    flex-grow: 1;
+}
+
+/* Progress and Range Sliders (Visual Fill) */
+.progress-container {
+    width: 100%;
+    max-width: 500px;
+    margin-bottom: 10px;
+}
+
+.time-display {
+    display: flex;
+    justify-content: space-between;
+    font-size: 0.9rem;
+    color: var(--light-text-color);
+    padding-top: 5px;
+}
+
+input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--border-color);
+    outline: none;
+    padding: 0;
+    margin: 10px 0;
+    cursor: pointer;
+}
+
+/* Custom Track for Fill Effect - WebKit/Blink */
+input[type="range"]::-webkit-slider-runnable-track {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: linear-gradient(to right, var(--primary-color) var(--fill-percentage, 0%), var(--border-color) var(--fill-percentage, 0%));
+}
+
+input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    height: 16px;
+    width: 16px;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+    margin-top: -4px; /* Adjust to vertically align thumb */
+    box-shadow: 0 0 4px rgba(0, 0, 0, 0.2);
+}
+
+/* Custom Track for Fill Effect - Firefox */
+input[type="range"]::-moz-range-track {
+    width: 100%;
+    height: 8px;
+    border-radius: 4px;
+    background: var(--border-color);
+}
+
+input[type="range"]::-moz-range-progress {
+    background: var(--primary-color);
+    height: 8px;
+    border-radius: 4px;
+}
+
+input[type="range"]::-moz-range-thumb {
+    height: 16px;
+    width: 16px;
+    border: none;
+    border-radius: 50%;
+    background: var(--primary-color);
+    cursor: pointer;
+}
+
+
+/* Playlist Sidebar Styling */
+.playlist-sidebar {
+    flex: 1;
+    background-color: var(--card-background);
+    padding: 20px;
+    border-radius: var(--border-radius);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    min-width: 300px;
+}
+
+.playlist-title {
+    font-size: 1.5rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid var(--border-color);
+    padding-bottom: 10px;
+}
+
+.playlist-list {
+    list-style: none;
+    padding: 0;
+    max-height: 60vh;
+    overflow-y: auto;
+    /* Custom scrollbar for aesthetics */
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--border-color);
+}
+
+.playlist-list::-webkit-scrollbar {
+    width: 8px;
+}
+
+.playlist-list::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 4px;
+}
+
+.playlist-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    margin-bottom: 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s, box-shadow 0.2s;
+    border: 1px solid transparent;
+    user-select: none;
+}
+
+/* Drag-and-drop styles */
+.playlist-item[draggable="true"] {
+    cursor: grab;
+}
+
+.playlist-item.dragging {
+    opacity: 0.5;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.playlist-item.drag-over-top {
+    border-top: 3px solid var(--secondary-color);
+}
+
+.playlist-item.drag-over-bottom {
+    border-bottom: 3px solid var(--secondary-color);
+}
+
+
+.playlist-item:hover,
+.playlist-item:focus-visible {
+    background-color: var(--highlight-color);
+    border: 1px solid var(--primary-color);
+    outline: none;
+}
+
+.playlist-item.playing {
+    background-color: var(--primary-color);
+    color: white;
+    box-shadow: 0 2px 8px rgba(63, 81, 181, 0.4);
+}
+
+.playlist-item.playing .track-meta,
+.playlist-item.playing .playlist-duration,
+.playlist-item.playing .remove-btn {
+    color: white;
+}
+
+.playlist-cover {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+    margin-right: 15px;
+    flex-shrink: 0;
+}
+
+.playlist-details {
+    flex-grow: 1;
+    min-width: 0;
+}
+
+.playlist-title-small {
+    font-weight: bold;
+    font-size: 1rem;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.playlist-artist-small {
+    font-size: 0.85rem;
+    color: var(--light-text-color);
+}
+
+.playlist-duration {
+    margin-left: 15px;
+    font-size: 0.85rem;
+    color: var(--light-text-color);
+    flex-shrink: 0;
+}
+
+.remove-btn {
+    background: none;
+    border: none;
+    color: var(--light-text-color);
+    margin-left: 10px;
+    cursor: pointer;
+    padding: 5px;
+    transition: color 0.2s;
+    font-size: 1rem;
+    flex-shrink: 0;
+}
+
+.remove-btn:hover {
+    color: var(--secondary-color);
+}
+
+.playlist-actions {
+    margin-bottom: 15px;
+    text-align: right;
+}
+
+.action-btn {
+    padding: 8px 15px;
+    background-color: var(--secondary-color);
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: background-color 0.2s;
+}
+
+.action-btn:hover {
+    background-color: #d6376d;
+}
+
+/* Autoplay Error Message */
+.error-message {
+    padding: 10px;
+    background-color: #ffeb3b; /* Amber */
+    color: var(--text-color);
+    border: 1px solid #ffc107;
+    border-radius: 4px;
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 0.9rem;
+}
+
+.visually-hidden {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border-width: 0;
+}
+
+/* Responsive Design (Mobile-First) */
+@media (max-width: 900px) {
+    .app-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 0;
+    }
+
+    body {
+        padding: 10px;
+    }
+    
+    .music-player, .playlist-sidebar {
+        padding: 20px;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    /* Playlist collapses below main player */
+    .playlist-sidebar {
+        min-width: unset;
+        width: 100%;
+    }
+
+    .track-info-section {
+        flex-direction: row;
+        text-align: left;
+    }
+    
+    .cover-art-container {
+        max-width: 80px;
+        margin-right: 20px;
+        margin-bottom: 0;
+    }
+
+    .track-title {
+        font-size: 1.4rem;
+    }
+    
+    .track-artist, .track-album {
+        font-size: 0.9rem;
+    }
+
+    .volume-container, .main-controls {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 500px) {
+    .track-info-section {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .cover-art-container {
+        max-width: 150px;
+        margin-right: 0;
+        margin-bottom: 15px;
+    }
+}
