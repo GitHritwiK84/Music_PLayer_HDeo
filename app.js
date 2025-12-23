@@ -32,6 +32,16 @@ const initialPlaylist = [
         cover: "assets/img/cover3.jpg",
         audio: "assets/audio/track3.mp3",
         duration: "2:32"
+    },
+
+    {
+        id: 4,
+        title: "Tum Ho Toh",
+        artist: "Vishal Mishra, Hansika Pareek",
+        album: "Official Music Video",
+        cover: "assets/img/cover4.jpg",
+        audio: "assets/audio/track4.mp3",
+        duration: "3:2"
     }
 ];
 
