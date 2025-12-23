@@ -1,5 +1,5 @@
 # Mentor Music Player Project
-
+live link: https://githritwik84.github.io/Music_PLayer_HDeo/
 This project delivers a complete, production-quality web music player built entirely with semantic HTML, modern CSS, and 100% vanilla JavaScript, strictly adhering to the provided project specifications.
 
 ## Project Description
